@@ -7,19 +7,17 @@ const app = express()
 app.get('', (req, res) => { 
     res.send('<h1> Selamat datang di halaman utama info Cuaca</h1>') 
 }) 
-//ini halaman info cuaca
-app.get('/infoCuaca', (req, res) => { 
-    if (!req.query.address) { 
-        return res.send({ 
-            error: ' Kamu harus memasukan lokasi yang ingin dicari' 
-        }) 
-    } 
-    res.send({ 
-        prediksiCuaca: 'Cuaca Sedang Hujan', 
-        lokasi: 'Padang', 
-        address: req.query.address 
-    }) 
-}) 
+
+//ini halaman berita
+app.get('/berita', (req, res) => {
+    res.send({
+       judul: 'Berita Terkini',
+       nama: 'Reno Nilam Sari',
+       penjelasan: 'Berikut adalah cuplikan berita dan kabar terkini',
+       berita: berita
+   });
+});
+
 
 app.listen(5000, () => { 
     console.log('Server berjalan pada port 5000.') 

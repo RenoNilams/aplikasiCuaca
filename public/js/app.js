@@ -23,4 +23,14 @@ weatherform.addEventListener('submit', (e) => {
             }
         });
     });
+
+    fetch('/berita').then((response) => {
+        response.json().then((data) => {
+            if (data.error) {
+                pesanSatu.textContent = data.error; // Tampilkan error jika ada
+            } else {
+                pesanSatu.textContent = data.berita; // Tampilkan berita
+            }
+        });
+    });
 });

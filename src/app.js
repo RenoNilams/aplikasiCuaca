@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT || 5000
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/prediksiCuaca')
+const berita = require('../utils/berita')
 
 // Tentukan direktori untuk file statis dan views
 const direktoriPublic = path.join(__dirname, '../public');
@@ -51,7 +52,7 @@ app.get('/infoCuaca', (req, res) => {
     });
 });
 
-// Halaman 404 untuk rute bantuan yang tidak ditemukan
+// Halaman bantuan
 app.get('/bantuan/', (req, res) => {
     res.render('bantuan', {
         judul: 'Bantuan',
@@ -60,7 +61,7 @@ app.get('/bantuan/', (req, res) => {
     })
 });
 
-// Halaman 404 untuk semua rute lainnya
+// Halaman tentang
 app.get('/tentang/', (req, res) => {
     res.render('tentang', {
         judul: 'Tentang Saya',
@@ -68,12 +69,22 @@ app.get('/tentang/', (req, res) => {
     })
 });
 
-// Rute untuk halaman penjelasan
+// Halaman penjelasan
 app.get('/penjelasan/', (req, res) => {
     res.render('penjelasan', {
         judul: 'Penjelasan Aplikasi Cek Cuaca',
         nama: 'Reno Nilam Sari',
         penjelasan: 'Ini adalah aplikasi cek cuaca.'
+    });
+});
+
+// Halaman Berita
+app.get('/berita', (req, res) => {
+     res.send({
+        judul: 'Berita Terkini',
+        nama: 'Reno Nilam Sari',
+        penjelasan: 'Berikut adalah cuplikan berita dan kabar terkini',
+        berita: berita
     });
 });
 

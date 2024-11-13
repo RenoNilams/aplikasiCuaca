@@ -8,21 +8,16 @@
     <link rel="stylesheet" href="/css/style-penjelasan.css">
 </head>
 <body>
-    {{>header}}
-    <main class="main-content">
-        <div class="background-image"></div>
-        <h2>Selamat datang di aplikasi Cek Cuaca! 🌤️</h2>
-        <section class="intro">
+    <div class="background-image"></div>
+    <div class="main-content">
+        {{>header}}
+        <div class="content-section">
             <p>Aplikasi ini dirancang untuk memberikan informasi cuaca terkini berdasarkan lokasi yang Anda cari. Cukup masukkan nama lokasi di form pencarian, dan kami akan menampilkan prediksi cuaca untuk Anda.</p>
-        </section>
-        <section class="example">
             <p>Misalnya, Anda dapat memasukkan lokasi seperti <strong>'Jakarta'</strong> atau <strong>'Padang'</strong>, dan dapatkan data cuaca terkini dengan mudah.</p>
-        </section>
-        <section class="features">
             <p>Dengan antarmuka yang sederhana dan intuitif, Anda bisa mengetahui cuaca sebelum merencanakan aktivitas Anda. Jadi, siap untuk mengeksplorasi cuaca di seluruh Indonesia?</p>
-        </section>
-    </main>
-    <script src="/js/app.js"></script>
-    {{>footer}}
+        </div>
+        <script src="/js/app.js"></script>
+        {{>footer}}
+        </div>
 </body>
 </html>
