@@ -5,6 +5,16 @@ const search = document.querySelector('input')
 const pesanSatu = document.querySelector('#pesan-1') 
 const pesanDua = document.querySelector('#pesan-2') 
 
+fetch('/berita').then((response) => {
+    response.json().then((data) => {
+        if (data.error) {
+            pesanSatu.textContent = data.error; // Tampilkan error jika ada
+        } else {
+            pesanSatu.textContent = data.getBerita; // Tampilkan berita
+        }
+    });
+});
+
 // pesanSatu.textContent = 'From javascript' 
 weatherform.addEventListener('submit', (e) => { 
     e.preventDefault() 
@@ -24,13 +34,6 @@ weatherform.addEventListener('submit', (e) => {
         });
     });
 
-    fetch('/berita').then((response) => {
-        response.json().then((data) => {
-            if (data.error) {
-                pesanSatu.textContent = data.error; // Tampilkan error jika ada
-            } else {
-                pesanSatu.textContent = data.berita; // Tampilkan berita
-            }
-        });
-    });
+    
 });
+

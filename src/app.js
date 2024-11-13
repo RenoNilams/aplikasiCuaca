@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 5000
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/prediksiCuaca')
-const berita = require('../utils/berita')
+const getBerita = require('./utils/berita')
 
 // Tentukan direktori untuk file statis dan views
 const direktoriPublic = path.join(__dirname, '../public');
@@ -79,12 +79,12 @@ app.get('/penjelasan/', (req, res) => {
 });
 
 // Halaman Berita
-app.get('/berita', (req, res) => {
-     res.send({
+app.get('/berita/', (req, res) => {
+    res.render('berita', {
         judul: 'Berita Terkini',
         nama: 'Reno Nilam Sari',
         penjelasan: 'Berikut adalah cuplikan berita dan kabar terkini',
-        berita: berita
+        berita: getBerita
     });
 });
 

@@ -14,7 +14,7 @@ app.get('/berita', (req, res) => {
        judul: 'Berita Terkini',
        nama: 'Reno Nilam Sari',
        penjelasan: 'Berikut adalah cuplikan berita dan kabar terkini',
-       berita: berita
+       berita: getBerita
    });
 });
 

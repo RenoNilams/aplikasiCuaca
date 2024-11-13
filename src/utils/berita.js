@@ -1,20 +1,27 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+
 const request = require('postman-request');
 
+const getBerita = (callback) => {
+    const apiKey = '607155d82114ff07b5b9800b4dbd2bc1'; // Ganti dengan API key Anda
+    const url = 'http://api.mediastack.com/v1/news?access_key=607155d82114ff07b5b9800b4dbd2bc1&countries=id&limit=5';
 
-    const url = 'http://api.mediastack.com/v1/news?access_key=607155d82114ff07b5b9800b4dbd2bc1';
-        
-    request({ url: url, json: true }, (error, response) => {
+
+    request({ url, json: true }, (error, { body }) => {
         if (error) {
-            callback('Tidak dapat terkoneksi ke layanan', undefined);
-        } else if (!response.body.data || response.body.data.length === 0) {
-            callback('Tidak dapat menemukan berita. Lakukan pencarian yang lain', undefined);
+            callback('Tidak dapat menghubungi layanan berita!', undefined);
+        } else if (body.error) {
+            callback('Gagal mengambil berita. Silakan cek API Key atau endpoint.', undefined);
         } else {
-            callback(undefined,
+            callback(undefined,  
                 'Penulis:' + response.body.data.author + '.' +
                 'Judul:' + response.body.data.title + '.' +
                 'Deskripsi' + response.body.data.description + '.'
-            );
+);
         }
     });
+};
 
-module.exports = berita;
+module.exports = getBerita;
