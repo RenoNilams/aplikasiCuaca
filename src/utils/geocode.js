@@ -1,7 +1,7 @@
 const request = require('postman-request');
 
 const geocode = (address, callback) => {
-    const url = 'http://api.positionstack.com/v5/forward?access_key=005a41bab81f917a1a540217b56f9216&query=' + 
+    const url = 'http://api.positionstack.com/v1/forward?access_key=0494e3d127515fdb5238da00f246388d&query=' + 
         encodeURIComponent(address);
         
     request({ url: url, json: true }, (error, response) => {
