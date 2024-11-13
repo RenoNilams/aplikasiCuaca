@@ -6,16 +6,54 @@
 }
 
 body {
-    font-family: 'Consolas', sans-serif;
+    font-family: 'Arial', sans-serif;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Menengahkan secara horizontal */
-    align-items: center; /* Menengahkan secara vertikal */
-    background-color: #f0f0f0; /* Warna latar belakang sederhana */
-    position: relative; /* Untuk gambar latar belakang */
+    flex-direction: column;
+    background-color: #f0f0f0;
+    position: relative;
 }
 
-/* Gambar latar belakang dengan efek transisi */
+/* Header dan Footer */
+header, footer {
+    background-color:#ffd39a;
+    text-align: center;
+    border-bottom: 5px solid #ffffff;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding: 15px;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 10px;
+    
+
+}
+
+/* Navbar dengan efek cahaya abu-abu */
+.nav-penjelasan {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-penjelasan a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.2); /* Efek bayangan abu-abu */
+}
+
+.nav-penjelasan a:hover {
+    background-color: #333;
+    box-shadow: 0 0 15px rgba(128, 128, 128, 0.6), 0 0 20px rgba(165, 165, 165, 0.5); /* Efek cahaya saat hover */
+}
+
+/* Background image */
 .background-image {
     position: absolute;
     top: 0;
@@ -25,180 +63,104 @@ body {
     background-image: url('/img/bgmusim.jpg');
     background-size: cover;
     background-position: center;
-    z-index: -1; /* Pastikan gambar latar di belakang konten */
-    transition: transform 10s ease, filter 5s ease;
+    z-index: -1;
 }
 
-/* Tampilan utama dengan efek cahaya */
+/* Footer full sampai ke bawah */
+footer {
+    margin-top: auto;
+    padding: 40px 0; /* Padding lebih besar agar terasa penuh */
+    background-color: rgb(88, 61, 48);
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+/* Konten utama */
 .main-content {
-    text-align: center; /* Memusatkan teks dan form di tengah */
-    background-color: rgba(0, 0, 0, 0.9); /* Warna latar belakang konten dengan sedikit transparansi */
-    padding: 40px;
-    border-radius: 5px; /* Memberikan sudut melengkung */
-    box-shadow: 0px 4px 15px rgba(31, 31, 31, 0.2); /* Memberikan efek bayangan */
-    animation: glowEffect 3s infinite alternate; /* Efek cahaya berdenyut */
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px 50px 150px 50px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid rgb(101, 74, 47);
+    text-align: center;
+    position: relative;
 }
 
-/* Keyframes untuk efek glow berdenyut */
-@keyframes glowEffect {
-    from {
-        box-shadow: 0 0 20px rgba(48, 48, 48, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Cahaya lembut */
+/* Efek cahaya pada konten */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 12px;
+    
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    /* animation: pulse 2s infinite; */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(133, 133, 133, 0.8), 0 0 60px rgba(156, 156, 156, 0.5); /* Cahaya di awal */
     }
-    to {
-        box-shadow: 0 0 40px rgba(81, 81, 81, 0.9), 0 0 60px rgba(117, 117, 117, 0.7); /* Cahaya lebih terang */
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        box-shadow: 0 0 50px rgb(126, 126, 126), 0 0 100px rgba(162, 162, 162, 0.5); /* Memperbesar cahaya */
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(114, 115, 115, 0.8), 0 0 60px rgba(152, 152, 152, 0.5); /* Kembali ke ukuran awal */
     }
 }
 
-/* Formulir dan input field */
-form {
-    margin: 20px 0;
+h2 {
+    color: #000000;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(108, 108, 108, 0.6); /* Efek cahaya pada h2 */
 }
 
-input[type="text"] {
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 15px;
-    border: 1px solid #5f5d5a;
-    width: 300px;
-    margin-right: 10px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+.content-section {
+    line-height: 1.7;
+    font-size: 1.2em;
+    color: #34495e;
 }
 
-input[type="text"]:focus {
-    border-color: #000000;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Efek cahaya biru di sekitar input saat fokus */
-    outline: none; /* Menghilangkan outline default */
+.content-section p {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Tombol dengan efek hover */
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 20px;
-    border: none;
-    background-color: #9b6f2c;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+.content-section p:hover {
+    background: #d1ecf1;
+    border-color: #47494c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: glow 1s infinite alternate; /* Animasi glow saat hover */
 }
-
-button:hover {
-    background-color: #ffffff;
-    transform: scale(1.05); /* Efek membesar sedikit saat hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan saat hover */
-}
-
-/* Pesan */
-#pesan-1, #pesan-2 {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-/* Efek glow pada judul */
-h1 {
-    color: #ffffff;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Efek bayangan pada teks */
-    font-size: 36px;
-    /* animation: glow 1.5s infinite alternate; */
-} 
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffc5aa, 0 0 30px #007BFF;
+        box-shadow: 0 0 10px gray (0, 255, 255, 0.5), 0 0 20px rgba(161, 161, 161, 0.3);
     }
     to {
-        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffc9b2, 0 0 40px #0056b3;
+        box-shadow: 0 0 30px gray (0, 255, 255, 1), 0 0 50px rgba(206, 206, 206, 0.7);
     }
-}
-
-/* Efek fade-in untuk form */
-form {
-    margin: 20px 0;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s forwards; /* Efek fade-in */
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-header {
-    background-color: #a8975d; /* Warna latar belakang */
-    padding: 20px; /* Padding untuk header */
-    text-align: center; /* Memusatkan teks */
-    border-bottom: 5px solid #ffffff; /* Garis bawah */
-    border-radius: 10px 10px 20px 20px; /* Sudut melengkung di bawah */
-}
-
-h1 {
-    font-size: 2.5em; /* Ukuran font yang lebih besar untuk judul */
-    color: white; /* Warna teks judul */
-    margin-bottom: 10px; /* Jarak di bawah judul */
-}
-
-
-
-body {
-    font-family: 'Verdana', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4; /* Latar belakang terang */
-}
-
-header {
-    background:  #ffd39a; /* Gradient yang lebih cerah */
-    padding: 30px; /* Padding lebih besar untuk ruang yang lebih baik */
-    text-align: center;
-    border-bottom: 5px solid white;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Bayangan halus di bawah header */
-}
-h1 {
-    font-size: 2.5em; /* Ukuran font yang lebih besar untuk judul */
-    color: white; /* Warna teks judul */
-    margin-bottom: 10px; /* Jarak di bawah judul */
-}
-
-.nav-penjelasan {
-    display: flex; /* Mengatur navigasi dalam baris */
-    justify-content: center; /* Memusatkan tautan navigasi */
-    gap: 15px; /* Jarak antar tautan */
-}
-
-.nav-penjelasan a {
-    color: white; /* Warna teks tautan */
-    text-decoration: none; /* Menghilangkan garis bawah */
-    padding: 10px 15px; /* Padding untuk tautan */
-    border-radius: 5px; /* Sudut melengkung pada tautan */
-    transition: background-color 0.3s ease; /* Transisi halus */
-}
-
-.nav-penjelasan a:hover {
-    background-color: #0b2924; /* Warna latar belakang saat hover */
-}
-
-.main-content {
-    max-width: 800px; /* Lebar maksimal konten */
-    margin: 40px auto; /* Margin otomatis untuk memusatkan */
-    padding: 30px; /* Padding untuk konten */
-    background: #fff; /* Latar belakang konten putih */
-    border-radius: 12px; /* Sudut melengkung lebih besar */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Bayangan yang lebih mendalam */
-}
-
-footer {
-    text-align: center; /* Mengatur teks di tengah */
-    padding: 20px; /* Memberikan padding */
-    background: #542f0a; /* Warna latar belakang footer */
-    color: white; /* Warna teks */
-    border-radius: 15px; /* Membuat sudut sedikit melengkung */
-    margin-top: 20px; /* Jarak di atas footer */
 }

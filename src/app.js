@@ -78,13 +78,21 @@ app.get('/penjelasan/', (req, res) => {
     });
 });
 
-// Halaman Berita
-app.get('/berita/', (req, res) => {
-    res.render('berita', {
-        judul: 'Berita Terkini',
-        nama: 'Reno Nilam Sari',
-        penjelasan: 'Berikut adalah cuplikan berita dan kabar terkini',
-        berita: getBerita
+app.get('/berita', (req, res) => {
+    getBerita((error, berita) => {
+        if (error) {
+            return res.render('berita', {
+                judul: 'Berita Terkini',
+                error: 'Gagal mengambil berita!',
+                nama: 'Reno Nilam Sari',
+                berita: []
+            });
+        }
+        res.render('berita', {
+            judul: 'Berita Terkini',
+            nama: 'Reno Nilam Sari',
+            berita // Kirim seluruh array
+        });
     });
 });
 

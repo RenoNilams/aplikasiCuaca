@@ -8,14 +8,32 @@
     <link rel="stylesheet" href="/css/style-tentang.css"> <!-- Menghubungkan dengan CSS baru -->
 </head>
 <body>
+    {{>header}} <!-- Menyertakan header -->
     <div class="background-image"></div>
     <div class="main-content">
-        {{>header}} <!-- Menyertakan header -->
+        <h2>About Me</h2>
         <img src="/img/reno.jpeg" alt="Foto pengembang" class="profile-pic">
-        <p>Dikembangkan oleh <strong>{{nama}}</strong></p>
+        <p><strong>{{nama}}</strong></p>
         <p>Informatics Student</p>
         <p>Universitas Negeri Padang</p>
+        <p><i>"Be yourself"</i></p>
+        <p>
+            _____________________<br><br>
+            <strong>Skill</strong><br><br>
+            <ul>
+                <li>Web Development(HTML, CSS, JavaScript, Node.js)</li>
+                <li>Object Oriented Programming (Java, C++)</li>
+                <li>UI/UX Design (Figma)                        </li>
+                <li>Data Analyst(Python, Pandas, Statistik)</li>
+            </ul>
+            _____________________<br><br>
+            <img src="/img/instagram.png"class ="logo">instagram: reno_nilams   
+            <img src="/img/instagram.png"class ="logo">github:RenoNilams
+        </p>
+
+
     </div>
     <script src="/js/app.js"></script>
+    {{>footer}}
 </body>
 </html>

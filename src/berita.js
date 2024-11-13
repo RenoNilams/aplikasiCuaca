@@ -1,30 +1,31 @@
-const express = require('express') 
+const express = require('express');
+const path = require('path');
+const hbs = require('hbs'); // Pastikan hbs sudah diinstall dan digunakan
 
-const app = express() 
+const getBerita = require('./utils/getBerita');
+const app = express();
 
-//ini halaman/page utama 
+// Setup hbs engine dan lokasi views
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.get('', (req, res) => { 
-    res.send('<h1> Selamat datang di halaman utama info Cuaca</h1>') 
-}) 
-
-//ini halaman berita
+// Route ke halaman berita
 app.get('/berita', (req, res) => {
-    res.send({
-       judul: 'Berita Terkini',
-       nama: 'Reno Nilam Sari',
-       penjelasan: 'Berikut adalah cuplikan berita dan kabar terkini',
-       berita: getBerita
-   });
+    getBerita((error, berita) => {
+        if (error) {
+            return res.render('berita', {
+                judul: 'Berita Terkini',
+                error: 'Gagal mengambil berita!',
+                berita: []
+            });
+        }
+        res.render('berita', {
+            judul: 'Berita Terkini',
+            berita
+        });
+    });
 });
 
-
-app.listen(5000, () => { 
-    console.log('Server berjalan pada port 5000.') 
-}) 
-
-const path = require('path')
-
-const direktoriPublic =path.join(__dirname, '../public')
-
-app.use(express.static(direktoriPublic))
+app.listen(3000, () => {
+    console.log('Server berjalan pada port 3000');
+});
